@@ -1,27 +1,27 @@
 import { usePreservedCallback } from '../usePreservedCallback'
-import { AnyEventHandler, EventCallback, Events, Elements, EventHandlers } from '../../types/event'
+import { AnyEventHandler, EventCallback, EventNames, ElementNames, EventHandlers } from '../../types/event'
 import { type DependencyList } from 'react'
 
 export function useEventCallback(handler: AnyEventHandler<HTMLElement>): AnyEventHandler<HTMLElement>
 
 export function useEventCallback<
-  Element extends Elements,
-  Event extends Events<Element>,
->(callback: EventCallback<Element, Event>, deps?: DependencyList): EventCallback<Element, Event>
+  ElementName extends ElementNames,
+  EventName extends EventNames<ElementName>,
+>(callback: EventCallback<ElementName, EventName>, deps?: DependencyList): EventCallback<ElementName, EventName>
 
 export function useEventCallback<
-  Event extends keyof EventHandlers<HTMLElement>,
->(event: Event, callback: EventHandlers[Event], deps?: DependencyList): EventHandlers[Event]
+  EventName extends keyof EventHandlers<HTMLElement>,
+>(event: EventName, callback: EventHandlers[EventName], deps?: DependencyList): EventHandlers[EventName]
 
 export function useEventCallback<
-  Element extends Elements,
-  Event extends Events<Element>,
+  ElementName extends ElementNames,
+  EventName extends EventNames<ElementName>,
 >(
-  element: Element,
-  event: Event,
-  callback: EventCallback<Element, Event>,
+  element: ElementName,
+  event: EventName,
+  callback: EventCallback<ElementName, EventName>,
   deps?: DependencyList
-): EventCallback<Element, Event>
+): EventCallback<ElementName, EventName>
 
 export function useEventCallback(...args: any[]): any {
   const last = args.pop()
