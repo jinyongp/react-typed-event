@@ -1,0 +1,17 @@
+{
+  "name": "@react-typed-event/monorepo",
+  "type": "module",
+  "private": true,
+  "packageManager": "pnpm@10.10.0",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "pnpm -r run build",
+    "build:react-typed-event": "pnpm --filter react-typed-event run build"
+  },
+  "devDependencies": {
+    "tsup": "^8.4.0",
+    "typescript": "^5.8.3"
+  }
+}
