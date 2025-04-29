@@ -1,5 +1,6 @@
 import type * as React from 'react'
 import type { JSX } from 'react'
+import { NonNullish } from './shared'
 
 export type ElementNames = keyof JSX.IntrinsicElements
 
@@ -16,4 +17,4 @@ export type EventHandlers<T = Element> = {
 export type EventCallback<
   ElementName extends ElementNames,
   EventName extends EventNames<ElementName>,
-> = JSX.IntrinsicElements[ElementName][EventName]
+> = NonNullish<JSX.IntrinsicElements[ElementName][EventName]>
