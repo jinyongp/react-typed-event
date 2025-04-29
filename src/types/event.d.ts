@@ -1,11 +1,11 @@
 import type * as React from 'react'
 import type { JSX } from 'react'
 
-export type HtmlTags = keyof JSX.IntrinsicElements
+export type Elements = keyof JSX.IntrinsicElements
 
-export type EventNames<HtmlTag extends HtmlTags> = {
-  [K in HtmlTags[HtmlTag]]: K extends `on${string}` ? K : never
-}[HtmlTags[HtmlTag]]
+export type Events<HtmlTag extends Elements> = {
+  [K in keyof JSX.IntrinsicElements[HtmlTag]]: K extends `on${string}` ? K : never
+}[keyof JSX.IntrinsicElements[HtmlTag]]
 
 export type AnyEventHandler<T = Element> = React.EventHandler<React.SyntheticEvent<T>>
 
@@ -14,8 +14,8 @@ export type GlobalEventHandlers<T = Element> = {
 }
 
 export type ElementEventHandler<
-  Tag extends HtmlTags,
-  EventName extends EventNames<Tag>,
-> = JSX.IntrinsicElements[Tag][EventName]
+  Tag extends Elements,
+  Event extends Events<Tag>,
+> = JSX.IntrinsicElements[Tag][Event]
 
 export type HtmlTags = keyof JSX.IntrinsicElements
