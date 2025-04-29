@@ -1,23 +1,21 @@
 import { usePreservedCallback } from '../usePreservedCallback'
-import { AnyEventHandler, EventHandler, EventHandlerMap } from '../../types/event'
-import { Type } from '../../types/shared'
+import { AnyEventHandler, ElementEventHandler, EventNames, HtmlTags, GlobalEventHandlers } from '../../types/event'
 
-export function useEventCallback(handler: AnyEventHandler): AnyEventHandler
-
-export function useEventCallback<
-  T extends HTMLElement,
-  N extends keyof EventHandlerMap<T>,
->(handler: EventHandler<T, N>): EventHandler<T, N>
+export function useEventCallback(handler: AnyEventHandler<HTMLElement>): AnyEventHandler<HTMLElement>
 
 export function useEventCallback<
-  T extends HTMLElement,
-  N extends keyof EventHandlerMap<T>,
->(eventName: N, callback: EventHandler<T, N>): EventHandler<T, N>
+  HtmlTag extends HtmlTags,
+  EventName extends EventNames<HtmlTag>,
+>(handler: ElementEventHandler<HtmlTag, EventName>): ElementEventHandler<HtmlTag, EventName>
 
 export function useEventCallback<
-  T extends HTMLElement,
-  N extends keyof EventHandlerMap<T>,
->(element: Type<T>, eventName: N, callback: EventHandler<T, N>): EventHandler<T, N>
+  EventName extends keyof GlobalEventHandlers<HTMLElement>,
+>(event: EventName, handler: GlobalEventHandlers[EventName]): GlobalEventHandlers[EventName]
+
+export function useEventCallback<
+  HtmlTag extends HtmlTags,
+  EventName extends EventNames<HtmlTag>,
+>(tag: HtmlTag, event: EventName, handler: ElementEventHandler<HtmlTag, EventName>): ElementEventHandler<HtmlTag, EventName>
 
 export function useEventCallback(...args: any[]): any {
   return usePreservedCallback(args.pop())
