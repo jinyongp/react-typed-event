@@ -1,6 +1,6 @@
 {
   "name": "react-typed-event",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Type-safe event handling utilities for React",
   "type": "module",
   "main": "./dist/index.js",
