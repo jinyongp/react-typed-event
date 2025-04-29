@@ -1,24 +1,59 @@
 {
-  "name": "@react-typed-event/monorepo",
+  "name": "react-typed-event",
+  "version": "0.1.0",
+  "description": "Type-safe event handling utilities for React",
   "type": "module",
-  "private": true,
-  "packageManager": "pnpm@10.10.0",
-  "workspaces": [
-    "packages/*"
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
   ],
   "scripts": {
-    "build": "pnpm -r run build",
-    "build:react-typed-event": "pnpm --filter react-typed-event run build"
+    "build": "tsup",
+    "lint": "eslint .",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "react",
+    "events",
+    "typescript",
+    "typed",
+    "hooks"
+  ],
+  "author": {
+    "name": "jinyongp",
+    "email": "dev.jinyongp@gmail.com",
+    "url": "https://jinyongp.dev"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jinyongp/react-typed-event"
   },
   "devDependencies": {
     "@eslint/js": "^9.25.1",
     "@eslint/markdown": "^6.4.0",
     "@stylistic/eslint-plugin": "^4.2.0",
+    "@types/react": "^19.1.2",
     "eslint": "^9.25.1",
     "eslint-plugin-react": "^7.37.5",
     "globals": "^16.0.0",
     "tsup": "^8.4.0",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.31.1"
-  }
+  },
+  "peerDependencies": {
+    "react": ">=16"
+  },
+  "packageManager": "pnpm@10.10.0"
 }
