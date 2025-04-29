@@ -1,22 +1,31 @@
 import { usePreservedCallback } from '../usePreservedCallback'
-import { AnyEventHandler, ElementEventHandler, Events, Elements, GlobalEventHandlers } from '../../types/event'
+import { AnyEventHandler, EventCallback, Events, Elements, EventHandlers } from '../../types/event'
+import { type DependencyList } from 'react'
 
 export function useEventCallback(handler: AnyEventHandler<HTMLElement>): AnyEventHandler<HTMLElement>
 
 export function useEventCallback<
   Element extends Elements,
   Event extends Events<Element>,
->(handler: ElementEventHandler<Element, Event>): ElementEventHandler<Element, Event>
+>(callback: EventCallback<Element, Event>, deps?: DependencyList): EventCallback<Element, Event>
 
 export function useEventCallback<
-  Event extends keyof GlobalEventHandlers<HTMLElement>,
->(event: Event, handler: GlobalEventHandlers[Event]): GlobalEventHandlers[Event]
+  Event extends keyof EventHandlers<HTMLElement>,
+>(event: Event, callback: EventHandlers[Event], deps?: DependencyList): EventHandlers[Event]
 
 export function useEventCallback<
   Element extends Elements,
   Event extends Events<Element>,
->(element: Element, event: Event, handler: ElementEventHandler<Element, Event>): ElementEventHandler<Element, Event>
+>(
+  element: Element,
+  event: Event,
+  callback: EventCallback<Element, Event>,
+  deps?: DependencyList
+): EventCallback<Element, Event>
 
 export function useEventCallback(...args: any[]): any {
-  return usePreservedCallback(args.pop())
+  const last = args.pop()
+  if (Array.isArray(last)) return usePreservedCallback(args.pop(), last)
+  if (typeof last === 'function') return usePreservedCallback(last)
+  throw new Error('invalid arguments')
 }

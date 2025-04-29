@@ -9,11 +9,11 @@ export type Events<HtmlTag extends Elements> = {
 
 export type AnyEventHandler<T = Element> = React.EventHandler<React.SyntheticEvent<T>>
 
-export type GlobalEventHandlers<T = Element> = {
+export type EventHandlers<T = Element> = {
   [K in keyof Required<React.DOMAttributes<T>> as K extends `on${string}` ? K : never]: Required<React.DOMAttributes<T>>[K]
 }
 
-export type ElementEventHandler<
+export type EventCallback<
   Tag extends Elements,
   Event extends Events<Tag>,
 > = JSX.IntrinsicElements[Tag][Event]

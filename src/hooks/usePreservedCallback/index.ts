@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef } from 'react'
+import { type DependencyList, useCallback, useEffect, useRef } from 'react'
 
 /**
  * @internal
@@ -7,7 +7,10 @@ import { useCallback, useEffect, useRef } from 'react'
 export function usePreservedCallback<
   Arguments extends any[] = any[],
   ReturnValue = unknown,
->(callback: (...args: Arguments) => ReturnValue) {
+>(
+  callback: (...args: Arguments) => ReturnValue,
+  deps: DependencyList = [],
+) {
   const callbackRef = useRef(callback)
 
   useEffect(() => {
@@ -16,5 +19,5 @@ export function usePreservedCallback<
 
   return useCallback((...args: Arguments) => {
     return callbackRef.current(...args)
-  }, [])
+  }, deps)
 }
