@@ -55,5 +55,8 @@
   "peerDependencies": {
     "react": ">=16"
   },
-  "packageManager": "pnpm@10.10.0"
+  "packageManager": "pnpm@10.10.0",
+  "engines": {
+    "node": "20"
+  }
 }
