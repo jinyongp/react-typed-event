@@ -1,6 +1,6 @@
 import { useLatestCallback } from '../useLatestCallback'
-import { AnyEventHandler, EventCallback, EventNames, ElementNames, EventHandlers } from '../../types/event'
-import { type DependencyList } from 'react'
+import type { DependencyList } from 'react'
+import type { AnyEventHandler, EventCallback, EventNames, ElementNames, EventHandlers } from '../../types/event'
 
 export function useEventCallback(handler: AnyEventHandler<HTMLElement>): AnyEventHandler<HTMLElement>
 

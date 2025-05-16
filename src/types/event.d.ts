@@ -1,6 +1,6 @@
 import type * as React from 'react'
 import type { JSX } from 'react'
-import { NonNullish } from './shared'
+import type { NonNullish } from './shared'
 
 export type ElementNames = keyof JSX.IntrinsicElements
 
