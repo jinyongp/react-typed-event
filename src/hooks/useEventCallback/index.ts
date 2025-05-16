@@ -1,4 +1,4 @@
-import { usePreservedCallback } from '../usePreservedCallback'
+import { useLatestCallback } from '../useLatestCallback'
 import { AnyEventHandler, EventCallback, EventNames, ElementNames, EventHandlers } from '../../types/event'
 import { type DependencyList } from 'react'
 
@@ -25,7 +25,7 @@ export function useEventCallback<
 
 export function useEventCallback(...args: any[]): any {
   const last = args.pop()
-  if (Array.isArray(last)) return usePreservedCallback(args.pop(), last)
-  if (typeof last === 'function') return usePreservedCallback(last)
+  if (Array.isArray(last)) return useLatestCallback(args.pop(), last)
+  if (typeof last === 'function') return useLatestCallback(last)
   throw new Error('invalid arguments')
 }
