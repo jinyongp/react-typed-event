@@ -2,25 +2,26 @@ name: Publish Package
 
 on:
   push:
-    tags:
-      - '*'
+    branches:
+      - main
 
   workflow_dispatch:
 
+env:
+  CI: true
+
 jobs:
   publish:
+    timeout-minutes: 15
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
-        with:
-          run_install: false
 
-      - name: Install Node.js
+      - name: Setup node.js
         uses: actions/setup-node@v4
         with:
           cache: 'pnpm'
@@ -29,10 +30,11 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Build package
-        run: pnpm run build
-
-      - name: Publish package
-        run: npm publish
+      - name: Create and publish versions
+        with:
+          commit: "chore: update versions"
+          title: "chore: update versions"
+          publish: pnpm publish -r
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
