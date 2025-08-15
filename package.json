@@ -1,65 +1,22 @@
 {
-  "name": "react-typed-event",
-  "version": "0.2.3",
-  "description": "Type-safe event handling utilities for React",
-  "type": "module",
-  "main": "./dist/index.js",
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
-    }
-  },
-  "files": [
-    "dist",
-    "README.md",
-    "LICENSE"
-  ],
+  "name": "@jinyongp/react-typed-event",
+  "private": true,
   "scripts": {
-    "build": "tsup",
-    "lint": "eslint .",
-    "prepublishOnly": "npm run build"
-  },
-  "keywords": [
-    "react",
-    "events",
-    "typescript",
-    "typed",
-    "hooks"
-  ],
-  "author": {
-    "name": "jinyongp",
-    "email": "root@jinyongp.dev",
-    "url": "https://jinyongp.dev"
-  },
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jinyongp/react-typed-event.git"
-  },
-  "bugs": {
-    "url": "https://github.com/jinyongp/react-typed-event/issues",
-    "email": "helpdesk@jinyongp.dev"
+    "build": "pnpm -r build",
+    "lint": "pnpm -r lint"
   },
   "devDependencies": {
-    "@eslint/js": "^9.25.1",
-    "@eslint/markdown": "^6.4.0",
-    "@stylistic/eslint-plugin": "^4.2.0",
-    "@types/react": "^19.1.2",
-    "eslint": "^9.25.1",
+    "@eslint/js": "^9.33.0",
+    "@eslint/markdown": "^7.1.0",
+    "@stylistic/eslint-plugin": "^5.2.3",
+    "eslint": "^9.33.0",
     "eslint-plugin-react": "^7.37.5",
-    "globals": "^16.0.0",
-    "tsup": "^8.4.0",
-    "typescript": "^5.8.3",
-    "typescript-eslint": "^8.31.1"
+    "globals": "^16.3.0",
+    "tsup": "^8.5.0",
+    "typescript": "^5.9.2",
+    "typescript-eslint": "^8.39.1"
   },
-  "peerDependencies": {
-    "react": ">=16"
-  },
-  "packageManager": "pnpm@10.10.0",
+  "packageManager": "pnpm@10.14.0+sha512.ad27a79641b49c3e481a16a805baa71817a04bbe06a38d17e60e2eaee83f6a146c6a688125f5792e48dd5ba30e7da52a5cda4c3992b9ccf333f9ce223af84748",
   "engines": {
     "node": "20"
   }

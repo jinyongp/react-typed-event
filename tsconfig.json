@@ -2,25 +2,29 @@
   "compilerOptions": {
     "target": "ES2020",
     "module": "ESNext",
-    "declaration": true,
-    "declarationMap": true,
-    "jsx": "react",
+    "moduleResolution": "bundler",
     "strict": true,
-    "sourceMap": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "moduleResolution": "node",
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "jsx": "react-jsx",
+    "lib": [
+      "ES2020",
+      "DOM"
+    ],
+    "verbatimModuleSyntax": true,
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
-    "verbatimModuleSyntax": true,
-    "baseUrl": ".",
-    "paths": {
-      "@/*": [
-        "src/*"
-      ]
-    }
+    "incremental": true,
+    "tsBuildInfoFile": ".tsbuildinfo"
   },
-  "include": [
-    "src"
-  ],
+  "include": [],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
 }
