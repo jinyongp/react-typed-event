@@ -1,7 +1,7 @@
 {
   "name": "react-typed-event",
   "description": "Type-safe event handling utilities for React",
-  "version": "2.4.0",
+  "version": "2.5.0",
   "license": "MIT",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",

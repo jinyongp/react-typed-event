@@ -2,7 +2,7 @@
   "name": "@jinyongp/react-typed-event",
   "private": true,
   "scripts": {
-    "build": "pnpm -r build",
+    "build": "pnpm -r --workspace-concurrency=1 build",
     "lint": "pnpm -r lint"
   },
   "devDependencies": {
