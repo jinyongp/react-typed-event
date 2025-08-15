@@ -22,7 +22,9 @@
     "incremental": true,
     "tsBuildInfoFile": ".tsbuildinfo"
   },
-  "include": [],
+  "include": [
+    "**/*.d.ts"
+  ],
   "exclude": [
     "node_modules",
     "dist"
